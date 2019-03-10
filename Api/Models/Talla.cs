@@ -10,6 +10,10 @@ namespace ApiOberon.Models
     [Table("Tallas")]
     public class Talla
     {
+        public Talla()
+        {
+        }
+
         public Talla(int id_Talla, int id_Producto, string size, int stock)
         {
             Id_Talla = id_Talla;

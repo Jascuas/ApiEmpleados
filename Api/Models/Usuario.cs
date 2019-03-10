@@ -38,5 +38,9 @@ namespace ApiOberon.Models
             Rol = rol;
             Fecha = fecha;
         }
+
+        public Usuario()
+        {
+        }
     }
 }

@@ -10,6 +10,10 @@ namespace ApiOberon.Models
     [Table("Productos_Pedido")]
     public class ProductoPedido
     {
+        public ProductoPedido()
+        {
+        }
+
         public ProductoPedido(int id_Talla, int unidades)
         {
             this.id_Talla = id_Talla;

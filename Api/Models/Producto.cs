@@ -42,5 +42,9 @@ namespace ApiOberon.Models
             Estado = estado;
             Detalles = detalles;
         }
+
+        public Producto()
+        {
+        }
     }
 }

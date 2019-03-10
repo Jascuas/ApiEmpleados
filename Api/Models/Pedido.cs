@@ -10,6 +10,10 @@ namespace ApiOberon.Models
     [Table("Pedidos")]
     public class Pedido
     {
+        public Pedido()
+        {
+        }
+
         public Pedido(int id_Usuario, DateTime fecha_Pedido, double total)
         {
             this.id_Usuario = id_Usuario;

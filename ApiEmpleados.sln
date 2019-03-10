@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiEmpleados", "ApiEmpleados\ApiEmpleados.csproj", "{B615492B-C0E3-4723-96B3-3A8A6F2B4006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiOberon", "WebApplication1\ApiOberon.csproj", "{6B653C18-3EC6-4E89-94E0-01A8A6B67CA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiOberon", "Api\ApiOberon.csproj", "{6AC04F16-DCDF-4FF5-85B2-D38A5E441241}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{B615492B-C0E3-4723-96B3-3A8A6F2B4006}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B615492B-C0E3-4723-96B3-3A8A6F2B4006}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B615492B-C0E3-4723-96B3-3A8A6F2B4006}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B653C18-3EC6-4E89-94E0-01A8A6B67CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B653C18-3EC6-4E89-94E0-01A8A6B67CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B653C18-3EC6-4E89-94E0-01A8A6B67CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B653C18-3EC6-4E89-94E0-01A8A6B67CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC04F16-DCDF-4FF5-85B2-D38A5E441241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC04F16-DCDF-4FF5-85B2-D38A5E441241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AC04F16-DCDF-4FF5-85B2-D38A5E441241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC04F16-DCDF-4FF5-85B2-D38A5E441241}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
