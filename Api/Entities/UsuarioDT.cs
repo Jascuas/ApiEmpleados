@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ApiOberon.Entities
+{
+    [Table("USUARIOS")]
+    public class UsuarioDT
+    {
+        [Key]
+        [Column("ID_USUARIO")]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id_Usuario { get; set; }
+        [Column("PASSWORD")]
+        public String Password { get; set; }
+        [Column("NOMBRE_USUARIO")]
+        public String User { get; set; }
+        [Column("NOMBRE")]
+        public String Nombre { get; set; }
+        [Column("APELLIDOS")]
+        public String Apellidos { get; set; }
+        [Column("EMAIL")]
+        public String Email { get; set; }
+        [Column("ROLE")]
+        public String Rol { get; set; }
+        [Column("FECHA_REGISTRO")]
+        public DateTime Fecha { get; set; }
+        public UsuarioDT(string password, string user, string nombre, string apellidos, string email,string rol, DateTime fecha)
+        {
+            Password = password;
+            User = user;
+            Nombre = nombre;
+            Apellidos = apellidos;
+            Email = email;
+            Rol = rol;
+            Fecha = fecha;
+        }
+
+        public UsuarioDT()
+        {
+        }
+    }
+}

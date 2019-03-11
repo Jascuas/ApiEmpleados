@@ -17,24 +17,23 @@ namespace Api.Controllers
         {
             this.repo = new RepositoryOberon();
         }
+        public ProductoPedido Get(int id)
+        {
+            return this.repo.GetProductoPedido(id);
+        }
         [HttpGet]
-        public List<ProductoPedido> Get(int id_pedido)
+        public List<ProductoPedido> GetProductosPedido(int id_pedido)
         {
             return this.repo.GetProductosPedido(id_pedido);
         }
-        [HttpGet]
-        [Route("api/ProductoPedido/{id}")]
-        public ProductoPedido GetProductoPedido(int id_pro)
-        {
-            return this.repo.GetProductoPedido(id_pro);
-        }
+        
         // POST: api/ProductosPedido
-        public void Post([FromBody]string value)
-        {
-        }
-        public void Put(ProductoPedido pro)
+        public void Post(ProductoPedido pro)
         {
             this.repo.RegistrarProductoPedido(pro);
+        }
+        public void Put()
+        {
         }
 
         // DELETE: api/ProductosPedido/5

@@ -22,13 +22,14 @@ namespace ApiOberon.Controllers
         {
             return this.repo.GetTallas();
         }
-        [HttpGet]
+        //[HttpGet]
         //[Route("api/Productos/{id}")]
         // GET: api/Productos/5
         public Talla Get(int id)
         {
             return this.repo.GetTalla(id);
         }
+        [HttpGet]
         public List<Talla> GetTallas(int id_producto)
         {
             return this.repo.GetTallasProducto(id_producto);

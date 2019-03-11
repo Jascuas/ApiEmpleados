@@ -1,4 +1,5 @@
-﻿using ApiOberon.Models;
+﻿using ApiOberon.Entities;
+using ApiOberon.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace ApiOberon.Repositories
         Usuario ExisteUsuario(String email, String password);
         Usuario ExisteUsuario(int id_usuario);
         void RegistrarUsuario(String password, String nombre, String apellidos, String email);
+        List<Usuario> Usuarios();
         List<Producto> GetProductos();
         List<Producto> GetProductos(String tipo);
         Producto GetProducto(int id_producto);
@@ -21,7 +23,7 @@ namespace ApiOberon.Repositories
         List<Pedido> GetPedidos(int id_usurio);
         ProductoPedido GetProductoPedido(int id_producto);
         List<ProductoPedido> GetProductosPedido(int id_pedido);
-        Pedido RegistrarPedido(int id_Usuario, double total);
+        Pedido RegistrarPedido(PedidoDT pedido);
         void RegistrarProductoPedido(ProductoPedido pro);
     }
 }

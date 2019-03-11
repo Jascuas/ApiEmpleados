@@ -5,19 +5,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiOberon.Models
+namespace ApiOberon.Entities
 {
     [Table("Pedidos")]
-    public class Pedido
+    public class PedidoDT
     {
-        public Pedido()
+        public PedidoDT()
         {
         }
 
-
-        [Key]
-        [Column("Id_Pedido")]
-        public int id_pedido { get; set; }
+        public PedidoDT(int id_Usuario, double total)
+        {
+            this.id_Usuario = id_Usuario;
+            this.total = total;
+        }
+        //[Key]
+        //[Column("Id_Pedido")]
+        //public int id_pedido { get; set; }
         [Column("Id_Usuario")]
         public int id_Usuario { get; set; }
         [Column("Fecha_Pedido")]

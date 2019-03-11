@@ -1,4 +1,5 @@
 ﻿using ApiOberon.Data;
+using ApiOberon.Entities;
 using ApiOberon.Models;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,21 @@ namespace ApiOberon.Repositories
         {
             this.context = new OberonContext();
         }
-
+        public List<Usuario> Usuarios()
+        {
+            var consulta = from datos in context.Usuario select datos;
+            return consulta.ToList();
+        }
         public Usuario ExisteUsuario(String email, String password)
         {
             var consulta = from datos in context.Usuario where datos.Email == email && datos.Password == password select datos;
             return consulta.FirstOrDefault();
         }
-
+        public Usuario ExisteUsuario(int id_usuario)
+        {
+            var consulta = from datos in context.Usuario where datos.Id_Usuario == id_usuario select datos;
+            return consulta.FirstOrDefault();
+        }
         public void RegistrarUsuario(String password, String nombre, String apellidos, String email)
         {
             String user = nombre + " " + apellidos;
@@ -65,11 +74,7 @@ namespace ApiOberon.Repositories
             return consulta.ToList();
         }
 
-        public Usuario ExisteUsuario(int id_usuario)
-        {
-            var consulta = from datos in context.Usuario where datos.Id_Usuario == id_usuario select datos;
-            return consulta.FirstOrDefault();
-        }
+
 
         public Pedido GetPedido(int id_pedido)
         {
@@ -95,13 +100,12 @@ namespace ApiOberon.Repositories
             return consulta.ToList();
         }
 
-        public Pedido RegistrarPedido(int id_Usuario, double total)
+        public void RegistrarPedido(PedidoDT pedido)
         {
             DateTime fecha = DateTime.Now;
-            Pedido p = new Pedido(id_Usuario, fecha, total);
-            this.context.Pedidos.Add(p);
+            pedido.fecha_Pedido = fecha;
+            this.context.Pedidos.Add(pedido);
             this.context.SaveChanges();
-            return p;
         }
 
         public void RegistrarProductoPedido(ProductoPedido pro)
