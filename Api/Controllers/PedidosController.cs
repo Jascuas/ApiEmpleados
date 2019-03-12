@@ -31,17 +31,24 @@ namespace ApiOberon.Controllers
             return this.repo.GetPedidos(id_usuario);
         }
         // POST: api/Pedidos
-        public IAsyncResult Post(PedidoDT pedido)
+        public HttpResponseMessage Post(Pedido pedido)
         {
+            //if (!ModelState.IsValid) return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+            if (!ModelState.IsValid) return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState
+                .Where(x => x.Value.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                ));
             try
             {
-                this.repo.RegistrarPedido(pedido);
-                return Ok();
-            }catch (Exception ex)
-            {
-                return BadRequest(new { ex = ex.Message });
+                Pedido p = this.repo.RegistrarPedido(pedido);
+                return Request.CreateResponse(HttpStatusCode.OK, p);
             }
-             
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
         
         // PUT: api/Pedidos/5

@@ -22,7 +22,7 @@ namespace ApiOberon.Data
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Producto> Producto { get; set; }
         public DbSet<Talla> Talla { get; set; }
-        public DbSet<PedidoDT> Pedidos { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<ProductoPedido> ProductosPedido { get; set; }
     }
 }

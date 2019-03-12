@@ -23,7 +23,7 @@ namespace ApiOberon.Repositories
         List<Pedido> GetPedidos(int id_usurio);
         ProductoPedido GetProductoPedido(int id_producto);
         List<ProductoPedido> GetProductosPedido(int id_pedido);
-        Pedido RegistrarPedido(PedidoDT pedido);
+        Pedido RegistrarPedido(Pedido pedido);
         void RegistrarProductoPedido(ProductoPedido pro);
     }
 }

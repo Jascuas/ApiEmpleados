@@ -96,6 +96,7 @@
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Data\IOberonContext.cs" />
     <Compile Include="Data\OberonContext.cs" />
+    <Compile Include="Entities\RegisterCredentials.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
