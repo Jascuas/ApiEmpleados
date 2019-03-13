@@ -18,6 +18,7 @@ namespace ApiOberon.Controllers
             this.repo = new RepositoryOberon();
         }
         // GET: api/Productos
+        [Authorize]
         public List<Producto> Get()
         {
             return this.repo.GetProductos();
