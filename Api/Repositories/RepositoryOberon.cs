@@ -21,9 +21,14 @@ namespace ApiOberon.Repositories
             var consulta = from datos in context.Usuario select datos;
             return consulta.ToList();
         }
-        public Usuario ExisteUsuario(String email, String password)
+        public Usuario ExisteUsuario(LoginCredentials credentials)
         {
-            var consulta = from datos in context.Usuario where datos.Email == email && datos.Password == password select datos;
+            var consulta = from datos in context.Usuario where (datos.Email == credentials.Identifier || datos.User == credentials.Identifier) select datos;
+            return consulta.FirstOrDefault();
+        }
+        public Usuario LoginUsuario(LoginCredentials credentials)
+        {
+            var consulta = from datos in context.Usuario where (datos.Email == credentials.Identifier || datos.User == credentials.Identifier) && datos.Password == credentials.Password select datos;
             return consulta.FirstOrDefault();
         }
         public Usuario ExisteUsuario(int id_usuario)
@@ -31,12 +36,12 @@ namespace ApiOberon.Repositories
             var consulta = from datos in context.Usuario where datos.Id_Usuario == id_usuario select datos;
             return consulta.FirstOrDefault();
         }
-        public void RegistrarUsuario(String password, String nombre, String apellidos, String email)
+        public void RegistrarUsuario(RegisterCredentials credentials)
         {
-            String user = nombre + " " + apellidos;
+            String user = credentials.Nombre + " " + credentials.Apellidos;
             DateTime fecha = DateTime.Now;
             String rol = "cliente";
-            Usuario u = new Usuario(password, user, nombre, apellidos, email, rol, fecha);
+            Usuario u = new Usuario(credentials.Password, user, credentials.Nombre, credentials.Apellidos, credentials.Email, rol, fecha);
             this.context.Usuario.Add(u);
             this.context.SaveChanges();
         }

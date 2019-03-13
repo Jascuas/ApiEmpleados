@@ -7,31 +7,18 @@ using System.Threading.Tasks;
 
 namespace ApiOberon.Entities
 {
-    
     public class RegisterCredentials
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id_Usuario { get; set; }
-        public String Password { get; set; }
-        public String User { get; set; }
+        [Required(ErrorMessage = "Necesita un nombre.")]
         public String Nombre { get; set; }
+        [Required(ErrorMessage = "Necesita un apellido.")]
         public String Apellidos { get; set; }
+        [Required(ErrorMessage = "Necesita un email.")]
+        [EmailAddress(ErrorMessage = "Necesita un email valido.")]
         public String Email { get; set; }
-        public String Rol { get; set; }
-        public DateTime Fecha { get; set; }
-        public RegisterCredentials(string password, string user, string nombre, string apellidos, string email,string rol, DateTime fecha)
-        {
-            Password = password;
-            User = user;
-            Nombre = nombre;
-            Apellidos = apellidos;
-            Email = email;
-            Rol = rol;
-            Fecha = fecha;
-        }
-
-        public RegisterCredentials()
-        {
-        }
+        [Required(ErrorMessage = "Necesita una contraseña.")]
+        public String Password { get; set; }
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
+        public String PasswordConfirm { get; set; }
     }
 }

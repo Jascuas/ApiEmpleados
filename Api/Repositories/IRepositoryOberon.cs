@@ -9,9 +9,10 @@ namespace ApiOberon.Repositories
 {
     public interface IRepositoryOberon
     {
-        Usuario ExisteUsuario(String email, String password);
+        Usuario ExisteUsuario(LoginCredentials credentials);
+        Usuario LoginUsuario(LoginCredentials credentials);
         Usuario ExisteUsuario(int id_usuario);
-        void RegistrarUsuario(String password, String nombre, String apellidos, String email);
+        void RegistrarUsuario(RegisterCredentials credentials);
         List<Usuario> Usuarios();
         List<Producto> GetProductos();
         List<Producto> GetProductos(String tipo);

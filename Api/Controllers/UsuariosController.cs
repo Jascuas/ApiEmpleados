@@ -27,20 +27,7 @@ namespace ApiOberon.Controllers
         }
         // GET: api/Productos
         //[Route("")]
-        [HttpPost]
-        public Usuario Post([FromBody] String email, String password)
-        {
-            return this.repo.ExisteUsuario(email, password);
-        }
-        // POST: api/Productos
-        public void Post(String password, String nombre, String apellidos, String email)
-        {
-            this.repo.RegistrarUsuario(password, nombre, apellidos, email);
-        }
-        // PUT: api/Productos/5
-        public void Put()
-        {
-        }
+        
 
         // DELETE: api/Productos/5
         public void Delete(int id)

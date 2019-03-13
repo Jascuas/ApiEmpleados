@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ValidacionController.cs" />
     <Compile Include="Controllers\PedidosController.cs" />
     <Compile Include="Controllers\ProductosPedidoController.cs" />
     <Compile Include="Controllers\TallasController.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Data\IOberonContext.cs" />
     <Compile Include="Data\OberonContext.cs" />
+    <Compile Include="Entities\LoginCredentials.cs" />
     <Compile Include="Entities\RegisterCredentials.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
