@@ -9,15 +9,16 @@ namespace ApiOberon.Entities
 {
     public class LoginCredentials
     {
+        [Required(ErrorMessage = "Necesita un email o un nombre de usuario valido.")]
+        public String Identifier { get; set; }
+        [Required(ErrorMessage = "Necesita una contraseña correcta.")]
+        public String Password { get; set; }
+
+
         public LoginCredentials(string identifier, string password)
         {
             Identifier = identifier;
             Password = password;
         }
-
-        [Required(ErrorMessage = "Necesita un email o un nombre de usuario valido.")]
-        public String Identifier { get; set; }
-        [Required(ErrorMessage = "Necesita una contraseña correcta.")]
-        public String Password { get; set; }
     }
 }

@@ -8,30 +8,36 @@ using System.Threading.Tasks;
 namespace ApiOberon.Entities
 {
     [Table("PRODUCTOS")]
-    public class ProductoDT 
+    public class ProductoDTO 
     {
         [Key]
         [Column("ID_PRODUCTO")]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id_Producto { get; set; }
+        public int? Id_Producto { get; set; }
         [Column("PRODUCTO")]
+        [Required(ErrorMessage = "Necesita un nombre de producto.")]
         public String Nombre { get; set; }
         [Column("COLOR")]
+        [Required(ErrorMessage = "Necesita un color de producto.")]
         public String Color { get; set; }
         [Column("TIPO")]
+        [Required(ErrorMessage = "Necesita un tipo de producto.")]
         public String Tipo { get; set; }
-
         [Column("PRECIO")]
-        public double Precio { get; set; }
+        [Required(ErrorMessage = "Necesita un precio de producto.")]
+        public double? Precio { get; set; }
         [Column("INFORMACION")]
+        [Required(ErrorMessage = "Necesita informacion de producto.")]
         public String Informacion { get; set; }
         [Column("IMAGEN")]
+        [Required(ErrorMessage = "Necesita una imagen de producto.")]
         public String Imagen { get; set; }
         [Column("ESTADO")]
+        [Required(ErrorMessage = "Necesita un estado de producto.")]
         public String Estado { get; set; }
         [Column("DETALLES")]
+        [Required(ErrorMessage = "Necesita los detalles del producto.")]
         public String Detalles { get; set; }
-        public ProductoDT(string nombre, string color, string tipo, double precio, string informacion, string imagen, string estado, string detalles)
+        public ProductoDTO(string nombre, string color, string tipo, double precio, string informacion, string imagen, string estado, string detalles)
         {
             Nombre = nombre;
             Color = color;
@@ -43,7 +49,7 @@ namespace ApiOberon.Entities
             Detalles = detalles;
         }
 
-        public ProductoDT()
+        public ProductoDTO()
         {
         }
     }
