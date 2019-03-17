@@ -21,8 +21,7 @@ namespace ApiOberon.Entities
         public String Size { get; set; }
         [Column("Stock")]
         [Required(ErrorMessage = "Necesita un stock.")]
-        public int Stock { get; set; }
-
+        public int? Stock { get; set; }
 
         public TallaDTO()
         {

@@ -1,4 +1,5 @@
-﻿using ApiOberon.Models;
+﻿using ApiOberon.Entities;
+using ApiOberon.Models;
 using ApiOberon.Repositories;
 using System;
 using System.Collections.Generic;
@@ -18,20 +19,20 @@ namespace ApiOberon.Controllers
             this.repo = new RepositoryOberon();
         }
         // GET: api/Productos
-        [Authorize]
-        public List<Producto> Get()
+        
+        public List<ProductoDTO> Get()
         {
             return this.repo.GetProductos();
         }
         //[HttpGet]
         //[Route("api/Productos/{id}")]
         // GET: api/Productos/5
-        public Producto Get(int id)
+        public ProductoDTO Get(int id)
         {
             return this.repo.GetProducto(id);
         }
         [HttpGet]
-        public List<Producto> Get(string tipo)
+        public List<ProductoDTO> Get(string tipo)
         {
             return this.repo.GetProductos(tipo);
         }

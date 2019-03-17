@@ -13,19 +13,18 @@ namespace ApiOberon.Models
         {
             this.producto = producto;
             this.tallas = tallas;
-            this.stock = generarStock();
         }
+
+        public ProductoTalla(Producto producto, List<Talla> tallas, int unidades) : this(producto, tallas)
+        {
+            this.producto = producto;
+            this.tallas = tallas;
+            this.unidades = unidades;
+        }
+
         public Producto producto { get; set; }
         public List<Talla> tallas { get; set; }
-        public int stock { get; set; }
-        public int generarStock()
-        {
-            foreach (Talla t in tallas)
-            {
-                this.stock += t.Stock;
-            }
-            return stock;
-        }
+        public int? unidades { get; set; }
         
     }
 }

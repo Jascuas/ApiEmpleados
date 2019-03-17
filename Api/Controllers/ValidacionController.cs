@@ -26,7 +26,7 @@ namespace ApiOberon.Controllers
             if (!ModelState.IsValid) return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
             try
             {
-                Usuario u = this.repo.ExisteUsuario(credentials);
+                UsuarioDTO u = this.repo.ExisteUsuario(credentials);
                 if (u == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "El usuario o el email no existen en nuestra plataforma");
@@ -58,14 +58,6 @@ namespace ApiOberon.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-        // PUT: api/Pedidos/5
-        public void Put()
-        {
-        }
-
-        // DELETE: api/Pedidos/5
-        public void Delete(int id)
-        {
-        }
+        
     }
 }

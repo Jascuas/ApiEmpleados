@@ -9,22 +9,23 @@ namespace ApiOberon.Repositories
 {
     public interface IRepositoryOberon
     {
-        Usuario ExisteUsuario(LoginCredentials credentials);
-        Usuario LoginUsuario(LoginCredentials credentials);
-        Usuario ExisteUsuario(int id_usuario);
+        UsuarioDTO ExisteUsuario(LoginCredentials credentials);
+        UsuarioDTO LoginUsuario(LoginCredentials credentials);
+        UsuarioDTO ExisteUsuario(int id_usuario);
         void RegistrarUsuario(RegisterCredentials credentials);
-        List<Usuario> Usuarios();
-        List<Producto> GetProductos();
-        List<Producto> GetProductos(String tipo);
-        Producto GetProducto(int id_producto);
-        Talla GetTalla(int id_talla);
-        List<Talla> GetTallasProducto(int id_producto);
-        List<Talla> GetTallas();
-        Pedido GetPedido(int id_pedido);
-        List<Pedido> GetPedidos(int id_usurio);
-        ProductoPedido GetProductoPedido(int id_producto);
-        List<ProductoPedido> GetProductosPedido(int id_pedido);
-        Pedido RegistrarPedido(Pedido pedido);
-        void RegistrarProductoPedido(ProductoPedido pro);
+        List<UsuarioDTO> Usuarios();
+        List<ProductoDTO> GetProductos();
+        List<ProductoDTO> GetProductos(String tipo);
+        ProductoDTO GetProducto(int id_producto);
+        TallaDTO GetTalla(int id_talla);
+        List<TallaDTO> GetTallasProducto(int id_producto);
+        List<TallaDTO> GetTallas();
+        PedidoDTO GetPedido(int id_pedido);
+        List<PedidoDTO> GetPedidos();
+        List<PedidoDTO> GetPedidos(int id_usurio);
+        ProductoPedidoDTO GetProductoPedido(int id_producto);
+        List<ProductoPedidoDTO> GetProductosPedido(int id_pedido);
+        PedidoDTO RegistrarPedido(PedidoDTO pedido);
+        void RegistrarProductoPedido(ProductoPedidoDTO pro);
     }
 }

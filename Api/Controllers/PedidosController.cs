@@ -6,38 +6,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
+using System.Security.Claims;
 using System.Web.Http;
 
 namespace ApiOberon.Controllers
 {
+    [Authorize]
     public class PedidosController : ApiController
     {
         RepositoryOberon repo;
-
         public PedidosController()
         {
             this.repo = new RepositoryOberon();
         }
-        //[Route("api/Pedidos/{id}")]
-
-        // GET: api/Pedidos/5
-        public Pedido Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return this.repo.GetPedido(id);
+            ClaimsIdentity identidad = User.Identity as ClaimsIdentity;
+            if (identidad.FindFirst(ClaimTypes.Role).Value == "admin")
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, this.repo.GetPedidos());
+            }
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
-        [HttpGet]
-        public List<Pedido> GetPedidos(int id_usuario)
+        [Route("api/pedido/{id}")]
+        public HttpResponseMessage GetPedido(int id)
         {
-            return this.repo.GetPedidos(id_usuario);
+            ClaimsIdentity identidad = User.Identity as ClaimsIdentity;
+            if (identidad.FindFirst(ClaimTypes.Role).Value == "admin")
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, this.repo.GetPedido(id));
+            }
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
         // POST: api/Pedidos
-        public HttpResponseMessage Post(Pedido pedido)
+        public HttpResponseMessage Post(PedidoDTO pedido)
         {
             if (!ModelState.IsValid) return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
             try
             {
-                Pedido p = this.repo.RegistrarPedido(pedido);
+                PedidoDTO p = this.repo.RegistrarPedido(pedido);
                 return Request.CreateResponse(HttpStatusCode.OK, p);
             }
             catch (Exception ex)

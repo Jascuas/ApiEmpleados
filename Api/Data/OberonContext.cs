@@ -19,10 +19,10 @@ namespace ApiOberon.Data
             Database.SetInitializer<OberonContext>(null);
         }
 
-        public DbSet<Usuario> Usuario { get; set; }
-        public DbSet<Producto> Producto { get; set; }
-        public DbSet<Talla> Talla { get; set; }
-        public DbSet<Pedido> Pedidos { get; set; }
-        public DbSet<ProductoPedido> ProductosPedido { get; set; }
+        public DbSet<UsuarioDTO> Usuario { get; set; }
+        public DbSet<ProductoDTO> Producto { get; set; }
+        public DbSet<TallaDTO> Talla { get; set; }
+        public DbSet<PedidoDTO> Pedidos { get; set; }
+        public DbSet<ProductoPedidoDTO> ProductosPedido { get; set; }
     }
 }

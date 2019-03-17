@@ -38,7 +38,7 @@ namespace ApiOberon.Credentials
             //DE USERNAME Y PASSWORD, QUE SON ELEMENTOS ESTATICOS
             //DE LAS PETICIONES
             LoginCredentials credentials = new LoginCredentials(context.UserName, context.Password);
-                Usuario user = repo.LoginUsuario(credentials);
+                UsuarioDTO user = repo.LoginUsuario(credentials);
                 //EN CASO DE QUE EL USUARIO NO EXISTA
                 //INCLUIMOS UN ERROR EN LA PETICION Y NO CONTINUARA
                 //REALIZANDO PETICIONES
