@@ -110,13 +110,12 @@ namespace ApiOberon.Repositories
             return consulta.ToList();
         }
 
-        public PedidoDTO RegistrarPedido(PedidoDTO pedido)
+        public void RegistrarPedido(PedidoDTO pedido)
         {
             DateTime fecha = DateTime.Now;
             pedido.fecha_Pedido = fecha;
             this.context.Pedidos.Add(pedido);
             this.context.SaveChanges();
-            return pedido;
         }
 
         public void RegistrarProductoPedido(ProductoPedidoDTO pro)

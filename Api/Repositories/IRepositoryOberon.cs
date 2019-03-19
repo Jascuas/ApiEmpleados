@@ -25,7 +25,7 @@ namespace ApiOberon.Repositories
         List<PedidoDTO> GetPedidos(int id_usurio);
         ProductoPedidoDTO GetProductoPedido(int id_producto);
         List<ProductoPedidoDTO> GetProductosPedido(int id_pedido);
-        PedidoDTO RegistrarPedido(PedidoDTO pedido);
+        void RegistrarPedido(PedidoDTO pedido);
         void RegistrarProductoPedido(ProductoPedidoDTO pro);
     }
 }

@@ -19,7 +19,7 @@ namespace ApiOberon.Controllers
         {
             this.repo = new RepositoryOberon();
         }
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get()
         {
             ClaimsIdentity identidad = User.Identity as ClaimsIdentity;
             if (identidad.FindFirst(ClaimTypes.Role).Value == "admin")
@@ -28,8 +28,7 @@ namespace ApiOberon.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
-        [Route("api/pedido/{id}")]
-        public HttpResponseMessage GetPedido(int id)
+        public HttpResponseMessage Get(int id)
         {
             ClaimsIdentity identidad = User.Identity as ClaimsIdentity;
             if (identidad.FindFirst(ClaimTypes.Role).Value == "admin")

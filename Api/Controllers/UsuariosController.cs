@@ -55,10 +55,11 @@ namespace ApiOberon.Controllers
                 List<ProductoPedido> productos = new List<ProductoPedido>();
                 foreach(ProductoPedidoDTO p in productosPedido)
                 {
+                   
                     TallaDTO talla = this.repo.GetTalla(p.id_Talla.Value);
                     ProductoDTO producto = this.repo.GetProducto(talla.Id_Producto.Value);
                     Producto pro = new Producto(producto.Id_Producto.Value, producto.Nombre, producto.Precio.Value, producto.Imagen);
-                    ProductoPedido productopedido = new ProductoPedido(p.id_Producto_Pedido.Value, pro, talla.Size, p.unidades.Value);
+                    ProductoPedido productopedido = new ProductoPedido(p.id_Producto_Pedido.Value, pro, talla.Size, p.unidades.Value); 
                     productos.Add(productopedido);
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, productos);
