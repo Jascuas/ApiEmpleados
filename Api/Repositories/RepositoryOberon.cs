@@ -60,7 +60,11 @@ namespace ApiOberon.Repositories
             var consulta = from datos in context.Producto where datos.Id_Producto == id_producto select datos;
             return consulta.FirstOrDefault();
         }
-
+        public ProductoDTO GetProductoFromTalla(int id_talla)
+        {
+            var consulta = from datos in context.Producto where datos.Id_Producto == (from data in context.Talla where data.Id_Talla == id_talla select data.Id_Producto).FirstOrDefault() select datos;
+            return consulta.FirstOrDefault();
+        }
         public TallaDTO GetTalla(int id_talla)
         {
             var consulta = from datos in context.Talla where datos.Id_Talla == id_talla select datos;
@@ -121,6 +125,11 @@ namespace ApiOberon.Repositories
         public void RegistrarProductoPedido(ProductoPedidoDTO pro)
         {
             this.context.ProductosPedido.Add(pro);
+            this.context.SaveChanges();
+        }
+        public void EliminarUsuario(UsuarioDTO u)
+        {
+            this.context.Usuario.Remove(u);
             this.context.SaveChanges();
         }
     }

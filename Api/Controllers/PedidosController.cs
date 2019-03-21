@@ -43,8 +43,8 @@ namespace ApiOberon.Controllers
             if (!ModelState.IsValid) return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
             try
             {
-                PedidoDTO p = this.repo.RegistrarPedido(pedido);
-                return Request.CreateResponse(HttpStatusCode.OK, p);
+                this.repo.RegistrarPedido(pedido);
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {

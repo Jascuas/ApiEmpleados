@@ -10,16 +10,16 @@ namespace ApiOberon.Models
 {
     public class ProductoPedido
     {
-        public ProductoPedido(int id_producto_pedido, Producto producto, String talla, int unidades)
+        public ProductoPedido(int id_producto_pedido, Producto producto, int id_talla, int unidades)
         {
             this.id_producto_pedido = id_producto_pedido;
             this.producto = producto;
-            this.talla = talla;
+            this.id_talla = id_talla;
             this.unidades = unidades;
         }
         public int id_producto_pedido { get; set; }
         public Producto producto { get; set; }
-        public String talla { get; set; }
+        public int id_talla { get; set; }
         public int unidades { get; set; }
     }
 }

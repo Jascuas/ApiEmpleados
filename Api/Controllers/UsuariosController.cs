@@ -1,6 +1,7 @@
 ﻿using ApiOberon.Entities;
 using ApiOberon.Models;
 using ApiOberon.Repositories;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace ApiOberon.Controllers
         }
         public HttpResponseMessage Get()
         {
-           return Request.CreateResponse(HttpStatusCode.OK, this.repo.ExisteUsuario(int.Parse(User.Identity.Name)));
+            return Request.CreateResponse(HttpStatusCode.OK, this.repo.ExisteUsuario(int.Parse(User.Identity.Name)));
         }
         [Route("api/Usuarios/{id_usuario}/Pedidos/")]
         public HttpResponseMessage GetPedidos(int id_usuario)
@@ -53,13 +54,10 @@ namespace ApiOberon.Controllers
             {
                 List<ProductoPedidoDTO> productosPedido = this.repo.GetProductosPedido(id_pedido);
                 List<ProductoPedido> productos = new List<ProductoPedido>();
-                foreach(ProductoPedidoDTO p in productosPedido)
-                {
-                   
-                    TallaDTO talla = this.repo.GetTalla(p.id_Talla.Value);
-                    ProductoDTO producto = this.repo.GetProducto(talla.Id_Producto.Value);
-                    Producto pro = new Producto(producto.Id_Producto.Value, producto.Nombre, producto.Precio.Value, producto.Imagen);
-                    ProductoPedido productopedido = new ProductoPedido(p.id_Producto_Pedido.Value, pro, talla.Size, p.unidades.Value); 
+                foreach (ProductoPedidoDTO p in productosPedido)
+                { 
+                    Producto pro = Mapper.Map<Producto>(this.repo.GetProductoFromTalla(p.id_Talla.Value));
+                    ProductoPedido productopedido = new ProductoPedido(p.id_Producto_Pedido.Value, pro, p.id_Talla.Value, p.unidades.Value); 
                     productos.Add(productopedido);
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, productos);
@@ -72,12 +70,16 @@ namespace ApiOberon.Controllers
             int user_id = int.Parse(User.Identity.Name);
             if (user_id == id_usuario)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, this.repo.GetProductoPedido(id_producto));
+                ProductoPedidoDTO p = this.repo.GetProductoPedido(id_producto);
+                Producto pro = Mapper.Map<Producto>(this.repo.GetProductoFromTalla(p.id_Talla.Value));
+                ProductoPedido productopedido = new ProductoPedido(p.id_Producto_Pedido.Value, pro, p.id_Talla.Value, p.unidades.Value);
+                return Request.CreateResponse(HttpStatusCode.OK, productopedido);
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
         public void Delete(int id)
         {
+          this.repo.EliminarUsuario(this.repo.ExisteUsuario(int.Parse(User.Identity.Name)));
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using Api;
+using ApiOberon.Helper;
+using AutoMapper;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -53,6 +55,10 @@ namespace ApiOberon
             //HABRA AUTORIZADO LOS TOKENS
             //POR LO QUE INDICAMOS DESPUES QUE
             //CONFIGURACION UTILIZARA NUESTRO API
+            UserProfile profile = new UserProfile();
+            Mapper.Initialize(cfg => {
+                cfg.AddProfile(profile);
+            });
             app.UseWebApi(config);
         }
 

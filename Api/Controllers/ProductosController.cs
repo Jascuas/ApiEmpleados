@@ -24,9 +24,6 @@ namespace ApiOberon.Controllers
         {
             return this.repo.GetProductos();
         }
-        //[HttpGet]
-        //[Route("api/Productos/{id}")]
-        // GET: api/Productos/5
         public ProductoDTO Get(int id)
         {
             return this.repo.GetProducto(id);

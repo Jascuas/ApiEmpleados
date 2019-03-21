@@ -17,6 +17,7 @@ namespace ApiOberon.Repositories
         List<ProductoDTO> GetProductos();
         List<ProductoDTO> GetProductos(String tipo);
         ProductoDTO GetProducto(int id_producto);
+        ProductoDTO GetProductoFromTalla(int id_talla);
         TallaDTO GetTalla(int id_talla);
         List<TallaDTO> GetTallasProducto(int id_producto);
         List<TallaDTO> GetTallas();
