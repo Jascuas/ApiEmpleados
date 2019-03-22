@@ -27,6 +27,7 @@ namespace ApiOberon.Entities
             this.id_Talla = id_Talla;
             this.unidades = unidades;
         }
+        public virtual TallaDTO Talla { get; set; }
 
     }
 }

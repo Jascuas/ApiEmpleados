@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Data.Entity;
 namespace ApiOberon.Repositories
 {
     public class RepositoryOberon : IRepositoryOberon
@@ -102,10 +102,15 @@ namespace ApiOberon.Repositories
             return consulta.ToList();
         }
 
+        //public ProductoPedidoDTO GetProductoPedido(int id_producto)
+        //{
+        //    var consulta = from datos in context.ProductosPedido where datos.id_Producto_Pedido == id_producto select datos;
+        //    return consulta.FirstOrDefault();
+        //}
         public ProductoPedidoDTO GetProductoPedido(int id_producto)
         {
-            var consulta = from datos in context.ProductosPedido where datos.id_Producto_Pedido == id_producto select datos;
-            return consulta.FirstOrDefault();
+            ProductoPedidoDTO producto = context.ProductosPedido.Where(x => x.id_Producto_Pedido == id_producto).FirstOrDefault();
+            return producto;
         }
 
         public List<ProductoPedidoDTO> GetProductosPedido(int id_pedido)

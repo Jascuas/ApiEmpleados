@@ -33,5 +33,6 @@ namespace ApiOberon.Entities
             Size = size;
             Stock = stock;
         }
+        public virtual ProductoDTO Producto { get; set; }
     }
 }
