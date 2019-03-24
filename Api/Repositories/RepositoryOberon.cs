@@ -16,6 +16,7 @@ namespace ApiOberon.Repositories
         {
             this.context = new OberonContext();
         }
+        
         public List<UsuarioDTO> Usuarios()
         {
             var consulta = from datos in context.Usuario select datos;
@@ -45,20 +46,21 @@ namespace ApiOberon.Repositories
             this.context.Usuario.Add(u);
             this.context.SaveChanges();
         }
+        
+        public ProductoDTO GetProducto(int id_producto)
+        {
+            ProductoDTO producto = context.Producto.Where(x => x.Id_Producto == id_producto).Include(x => x.tallas).FirstOrDefault();
+            return producto;
+        }
         public List<ProductoDTO> GetProductos()
         {
-            var consulta = from datos in context.Producto select datos;
-            return consulta.ToList();
+            List<ProductoDTO> producto = context.Producto.ToList();
+            return producto;
         }
         public List<ProductoDTO> GetProductos(String tipo)
         {
-            var consulta = from datos in context.Producto where datos.Tipo == tipo select datos;
-            return consulta.ToList();
-        }
-        public ProductoDTO GetProducto(int id_producto)
-        {
-            var consulta = from datos in context.Producto where datos.Id_Producto == id_producto select datos;
-            return consulta.FirstOrDefault();
+            List<ProductoDTO> producto = context.Producto.Where(x => x.Tipo == tipo).ToList();
+            return producto;
         }
         public ProductoDTO GetProductoFromTalla(int id_talla)
         {
@@ -82,9 +84,6 @@ namespace ApiOberon.Repositories
             var consulta = from datos in context.Talla select datos;
             return consulta.ToList();
         }
-
-
-
         public PedidoDTO GetPedido(int id_pedido)
         {
             var consulta = from datos in context.Pedidos where datos.id_pedido == id_pedido select datos;
@@ -101,22 +100,16 @@ namespace ApiOberon.Repositories
             var consulta = from datos in context.Pedidos where datos.id_Usuario == id_usurio select datos;
             return consulta.ToList();
         }
-
-        //public ProductoPedidoDTO GetProductoPedido(int id_producto)
-        //{
-        //    var consulta = from datos in context.ProductosPedido where datos.id_Producto_Pedido == id_producto select datos;
-        //    return consulta.FirstOrDefault();
-        //}
         public ProductoPedidoDTO GetProductoPedido(int id_producto)
         {
-            ProductoPedidoDTO producto = context.ProductosPedido.Where(x => x.id_Producto_Pedido == id_producto).FirstOrDefault();
+            ProductoPedidoDTO producto = context.ProductosPedido.Where(x => x.id_Producto_Pedido == id_producto).Include(x =>x.Talla).FirstOrDefault();
+            producto.Producto = context.Producto.Where(x => x.Id_Producto == producto.Talla.Id_Producto).FirstOrDefault();
             return producto;
         }
-
         public List<ProductoPedidoDTO> GetProductosPedido(int id_pedido)
         {
-            var consulta = from datos in context.ProductosPedido where datos.id_Pedido == id_pedido select datos;
-            return consulta.ToList();
+            List<ProductoPedidoDTO> producto = context.ProductosPedido.Where(x => x.id_Pedido == id_pedido).Include(x => x.Talla).ToList();
+            return producto;
         }
 
         public void RegistrarPedido(PedidoDTO pedido)

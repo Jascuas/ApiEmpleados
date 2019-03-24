@@ -12,7 +12,7 @@ namespace ApiOberon.Data
     {
         public OberonContext() : base("name=cadenaoberonazure")
         {
-
+            this.Configuration.LazyLoadingEnabled = false;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

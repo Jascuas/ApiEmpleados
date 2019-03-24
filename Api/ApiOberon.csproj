@@ -132,11 +132,8 @@
     <Compile Include="Entities\TallaDTO.cs" />
     <Compile Include="Entities\UsuarioDTO.cs" />
     <Compile Include="Helper\UserProfile.cs" />
-    <Compile Include="Models\Carro.cs" />
-    <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\ProductoPedido.cs" />
-    <Compile Include="Models\ProductoTalla.cs" />
     <Compile Include="Models\Talla.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

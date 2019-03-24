@@ -52,5 +52,7 @@ namespace ApiOberon.Entities
         public ProductoDTO()
         {
         }
+
+        public virtual List<TallaDTO> tallas { get; set; }
     }
 }

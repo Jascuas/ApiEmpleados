@@ -52,15 +52,8 @@ namespace ApiOberon.Controllers
             int user_id = int.Parse(User.Identity.Name);
             if (user_id == id_usuario)
             {
-                List<ProductoPedidoDTO> productosPedido = this.repo.GetProductosPedido(id_pedido);
-                //List<ProductoPedido> productos = new List<ProductoPedido>();
-                //foreach (ProductoPedidoDTO p in productosPedido)
-                //{ 
-                //    Producto pro = Mapper.Map<Producto>(this.repo.GetProductoFromTalla(p.id_Talla.Value));
-                //    ProductoPedido productopedido = new ProductoPedido(p.id_Producto_Pedido.Value, pro, p.id_Talla.Value, p.unidades.Value); 
-                //    productos.Add(productopedido);
-                //}
-                return Request.CreateResponse(HttpStatusCode.OK, productosPedido);
+                List<ProductoPedido> productos = Mapper.Map<List<ProductoPedido>>(this.repo.GetProductosPedido(id_pedido));
+                return Request.CreateResponse(HttpStatusCode.OK, productos);
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
@@ -70,10 +63,8 @@ namespace ApiOberon.Controllers
             int user_id = int.Parse(User.Identity.Name);
             if (user_id == id_usuario)
             {
-                ProductoPedidoDTO p = this.repo.GetProductoPedido(id_producto);
-                //Producto pro = Mapper.Map<Producto>(this.repo.GetProductoFromTalla(p.id_Talla.Value));
-                //ProductoPedido productopedido = new ProductoPedido(p.id_Producto_Pedido.Value, pro, p.id_Talla.Value, p.unidades.Value);
-                return Request.CreateResponse(HttpStatusCode.OK, p);
+                ProductoPedido producto = Mapper.Map<ProductoPedido>(this.repo.GetProductoPedido(id_producto));
+                return Request.CreateResponse(HttpStatusCode.OK, producto);
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }

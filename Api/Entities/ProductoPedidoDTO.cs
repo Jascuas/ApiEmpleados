@@ -19,15 +19,10 @@ namespace ApiOberon.Entities
         public int? id_Talla { get; set; }
         [Column("Unidades")]
         public int? unidades { get; set; }
+        public virtual TallaDTO Talla { get; set; }
         public ProductoPedidoDTO()
         {
         }
-        public ProductoPedidoDTO(int id_Talla, int unidades)
-        {
-            this.id_Talla = id_Talla;
-            this.unidades = unidades;
-        }
-        public virtual TallaDTO Talla { get; set; }
 
     }
 }

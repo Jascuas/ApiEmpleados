@@ -14,16 +14,5 @@ namespace ApiOberon.Models
         public String Nombre { get; set; }
         public double Precio { get; set; }
         public String Imagen { get; set; }
-        public Producto(int id_producto, string nombre, double precio, string imagen)
-        {
-            Id_Producto = id_producto;
-            Nombre = nombre;
-            Precio = precio;
-            Imagen = imagen;
-        }
-
-        public Producto()
-        {
-        }
     }
 }

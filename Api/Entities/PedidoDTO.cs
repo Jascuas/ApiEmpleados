@@ -22,6 +22,8 @@ namespace ApiOberon.Entities
         [Column("Total")]
         [Required(ErrorMessage = "Necesita un precio total del pedido.")]
         public double? total { get; set; }
-
+        public PedidoDTO()
+        {
+        }
     }
 }

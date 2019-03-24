@@ -10,15 +10,10 @@ namespace ApiOberon.Models
     public class Usuario
     {
         public int Id_Usuario { get; set; }
-        public String Password { get; set; }
         public String User { get; set; }
         public String Nombre { get; set; }
         public String Apellidos { get; set; }
         public String Email { get; set; }
-        public String Rol { get; set; }
         public DateTime Fecha { get; set; }
-        public Usuario()
-        {
-        }
     }
 }

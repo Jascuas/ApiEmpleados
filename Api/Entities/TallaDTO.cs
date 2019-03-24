@@ -22,7 +22,6 @@ namespace ApiOberon.Entities
         [Column("Stock")]
         [Required(ErrorMessage = "Necesita un stock.")]
         public int? Stock { get; set; }
-
         public TallaDTO()
         {
         }
@@ -33,6 +32,5 @@ namespace ApiOberon.Entities
             Size = size;
             Stock = stock;
         }
-        public virtual ProductoDTO Producto { get; set; }
     }
 }
