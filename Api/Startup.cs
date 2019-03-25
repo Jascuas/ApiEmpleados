@@ -26,7 +26,7 @@ namespace ApiOberon
                     TokenEndpointPath = new PathString("/recuperartoken"),
                     //TIEMPO QUE EL TOKEN NOS PERMITIRA ACCEDER A LAS
                     //PETICIONES GET SIN NECESIDAD DE GENERAR NINGUN OTRO
-                    AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                    AccessTokenExpireTimeSpan = TimeSpan.FromDays(30),
                     //CLASE ENCARGADA DE VALIDAR SI EL USUARIO
                     //TIENE ACCESO A LA GENERACION DE TOKENS
                     Provider = new Credentials.AutorizacionCredencialesToken(),

@@ -14,6 +14,7 @@ namespace ApiOberon.Models
         public String Nombre { get; set; }
         public String Apellidos { get; set; }
         public String Email { get; set; }
+        public String Rol { get; set; }
         public DateTime Fecha { get; set; }
     }
 }
