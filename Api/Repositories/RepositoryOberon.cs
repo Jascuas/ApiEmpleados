@@ -49,17 +49,17 @@ namespace ApiOberon.Repositories
         
         public ProductoDTO GetProducto(int id_producto)
         {
-            ProductoDTO producto = context.Producto.Where(x => x.Id_Producto == id_producto).Include(x => x.tallas).FirstOrDefault();
+            ProductoDTO producto = context.Producto.Where(x => x.Id_Producto == id_producto).Include(x => x.Tallas).FirstOrDefault();
             return producto;
         }
         public List<ProductoDTO> GetProductos()
         {
-            List<ProductoDTO> producto = context.Producto.ToList();
+            List<ProductoDTO> producto = context.Producto.Include(x => x.Tallas).ToList();
             return producto;
         }
         public List<ProductoDTO> GetProductos(String tipo)
         {
-            List<ProductoDTO> producto = context.Producto.Where(x => x.Tipo == tipo).ToList();
+            List<ProductoDTO> producto = context.Producto.Where(x => x.Tipo == tipo).Include(x => x.Tallas).ToList();
             return producto;
         }
         public ProductoDTO GetProductoFromTalla(int id_talla)
@@ -102,13 +102,12 @@ namespace ApiOberon.Repositories
         }
         public ProductoPedidoDTO GetProductoPedido(int id_producto)
         {
-            ProductoPedidoDTO producto = context.ProductosPedido.Where(x => x.id_Producto_Pedido == id_producto).Include(x =>x.Talla).FirstOrDefault();
-            producto.Producto = context.Producto.Where(x => x.Id_Producto == producto.Talla.Id_Producto).FirstOrDefault();
+            ProductoPedidoDTO producto = context.ProductosPedido.Where(x => x.Id_Producto_Pedido == id_producto).Include(x =>x.Producto).FirstOrDefault();
             return producto;
         }
         public List<ProductoPedidoDTO> GetProductosPedido(int id_pedido)
         {
-            List<ProductoPedidoDTO> producto = context.ProductosPedido.Where(x => x.id_Pedido == id_pedido).Include(x => x.Talla).ToList();
+            List<ProductoPedidoDTO> producto = context.ProductosPedido.Where(x => x.Id_Pedido == id_pedido).Include(x => x.Producto).ToList();
             return producto;
         }
 

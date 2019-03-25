@@ -53,6 +53,6 @@ namespace ApiOberon.Entities
         {
         }
 
-        public virtual List<TallaDTO> tallas { get; set; }
+        public virtual List<TallaDTO> Tallas { get; set; }
     }
 }

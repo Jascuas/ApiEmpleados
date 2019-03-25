@@ -19,20 +19,21 @@ namespace ApiOberon.Controllers
             this.repo = new RepositoryOberon();
         }
         // GET: api/Productos
+        public HttpResponseMessage Get()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this.repo.GetProductos());
+        }
+        public HttpResponseMessage Get(int id)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this.repo.GetProducto(id));
+        }
         
-        public List<ProductoDTO> Get()
-        {
-            return this.repo.GetProductos();
-        }
-        public ProductoDTO Get(int id)
-        {
-            return this.repo.GetProducto(id);
-        }
         [HttpGet]
-        public List<ProductoDTO> Get(string tipo)
+        public HttpResponseMessage Get(string tipo)
         {
-            return this.repo.GetProductos(tipo);
+            return Request.CreateResponse(HttpStatusCode.OK, this.repo.GetProductos(tipo));
         }
+        
         // POST: api/Productos
         public void Post([FromBody]string value)
         {

@@ -10,7 +10,8 @@ namespace ApiOberon.Models
 {
     public class ProductoPedido
     {
-        public Talla Talla { get; set; }
+        public Producto Producto { get; set; }
+        public String Size { get; set; }
         public int Unidades { get; set; }
     }
 }
