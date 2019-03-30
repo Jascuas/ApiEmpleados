@@ -72,5 +72,18 @@ namespace ApiOberon.Controllers
         {
           this.repo.EliminarUsuario(this.repo.ExisteUsuario(int.Parse(User.Identity.Name)));
         }
+        public HttpResponseMessage Post(RegisterCredentials credentials)
+        {
+            if (!ModelState.IsValid) return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+            try
+            {
+                this.repo.RegistrarUsuario(credentials);
+                return Request.CreateResponse(HttpStatusCode.OK, "Todo perfecto! Pruebe a loguearse.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
     }
 }
