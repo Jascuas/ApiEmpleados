@@ -12,7 +12,6 @@ using System.Web.Http;
 
 namespace ApiOberon.Controllers
 {
-    [Authorize]
     public class UsuariosController : ApiController
     {
         RepositoryOberon repo;
@@ -21,10 +20,12 @@ namespace ApiOberon.Controllers
         {
             this.repo = new RepositoryOberon();
         }
+        [Authorize]
         public HttpResponseMessage Get()
         {
             return Request.CreateResponse(HttpStatusCode.OK, this.repo.ExisteUsuario(int.Parse(User.Identity.Name)));
         }
+        [Authorize]
         [Route("api/Usuarios/{id_usuario}/Pedidos/")]
         public HttpResponseMessage GetPedidos(int id_usuario)
         {
@@ -35,7 +36,7 @@ namespace ApiOberon.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
-
+        [Authorize]
         [Route("api/Usuarios/{id_usuario}/Pedidos/{id_pedido}")]
         public HttpResponseMessage GetPedido(int id_usuario, int id_pedido)
         {
@@ -46,6 +47,7 @@ namespace ApiOberon.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
+        [Authorize]
         [Route("api/Usuarios/{id_usuario}/Pedidos/{id_pedido}/ProductosPedido")]
         public HttpResponseMessage GetProductosPedido(int id_usuario, int id_pedido)
         {
@@ -57,6 +59,7 @@ namespace ApiOberon.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
+        [Authorize]
         [Route("api/Usuarios/{id_usuario}/Pedidos/{id_pedido}/ProductosPedido/{id_producto}")]
         public HttpResponseMessage GetProductoPedido(int id_usuario, int id_pedido, int id_producto)
         {
@@ -68,6 +71,7 @@ namespace ApiOberon.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
+        [Authorize]
         public void Delete(int id)
         {
           this.repo.EliminarUsuario(this.repo.ExisteUsuario(int.Parse(User.Identity.Name)));

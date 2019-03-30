@@ -47,19 +47,6 @@ namespace ApiOberon.Credentials
                 context.SetError("Acceso denegado", "El usuario/password son incorrectos.");
                 return Task.CompletedTask;
             }
-            UsuarioDTO u = this.repo.ExisteUsuario(credentials);
-            if (u == null)
-            {
-                context.SetError("Acceso denegado", "El usuario o el email no existen en nuestra plataforma.");
-                return Task.CompletedTask;
-            }
-            u = this.repo.LoginUsuario(credentials);
-            if (u == null)
-            {
-                context.SetError("Acceso denegado", "La contraseña no coincide para este usuario.");
-                return Task.CompletedTask;
-            }
-
             //SI EL EMPLEADO EXISTE, NOS CREAMOS UN NUEVO OBJETO CLAIM
             //QUE INTRODUCE AL USUARIO DENTRO DEL SERVIDOR CON
             //LA VALIDACION DE "TERCEROS", ES DECIR, UNA VALIDACION
