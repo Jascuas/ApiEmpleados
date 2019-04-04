@@ -24,9 +24,7 @@ namespace ApiOberon.Controllers
         {
             return this.repo.GetTallas();
         }
-        //[HttpGet]
-        //[Route("api/Productos/{id}")]
-        // GET: api/Productos/5
+
         public TallaDTO Get(int id)
         {
             return this.repo.GetTalla(id);
