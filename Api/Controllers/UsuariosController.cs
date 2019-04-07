@@ -105,5 +105,24 @@ namespace ApiOberon.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+        [HttpPut]
+        public HttpResponseMessage Put(Usuario user)
+        {
+            if (!ModelState.IsValid) return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+            try
+            {
+                UsuarioDTO u = this.repo.ExisteUsuario(int.Parse(User.Identity.Name));
+                u.Nombre = user.Nombre;
+                u.Apellidos = user.Apellidos;
+                u.User = user.User;
+                u.Email = user.Email;
+                this.repo.ModificarUsuario(u);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
     }
 }

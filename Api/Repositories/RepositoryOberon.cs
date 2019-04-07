@@ -46,7 +46,13 @@ namespace ApiOberon.Repositories
             this.context.Usuario.Add(u);
             this.context.SaveChanges();
         }
-        
+        public void ModificarUsuario(UsuarioDTO user)
+        {
+            UsuarioDTO usuario = this.context.Usuario.Find(user.Id_Usuario);
+            usuario = user;
+            this.context.SaveChanges();
+        }
+
         public ProductoDTO GetProducto(int id_producto)
         {
             ProductoDTO producto = context.Producto.Where(x => x.Id_Producto == id_producto).Include(x => x.Tallas).FirstOrDefault();
@@ -111,12 +117,13 @@ namespace ApiOberon.Repositories
             return producto;
         }
 
-        public void RegistrarPedido(PedidoDTO pedido)
+        public PedidoDTO RegistrarPedido(PedidoDTO pedido)
         {
             DateTime fecha = DateTime.Now;
             pedido.fecha_Pedido = fecha;
             this.context.Pedidos.Add(pedido);
             this.context.SaveChanges();
+            return pedido;
         }
 
         public void RegistrarProductoPedido(ProductoPedidoDTO pro)
