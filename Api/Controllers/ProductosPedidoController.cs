@@ -20,7 +20,15 @@ namespace Api.Controllers
         {
             this.repo = new RepositoryOberon();
         }
-        
+        public HttpResponseMessage Get()
+        {
+            ClaimsIdentity identidad = User.Identity as ClaimsIdentity;
+            if (identidad.FindFirst(ClaimTypes.Role).Value == "admin")
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, this.repo.GetProductosPedidos());
+            }
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+        }
         public HttpResponseMessage Get(int id)
         {
             ClaimsIdentity identidad = User.Identity as ClaimsIdentity;

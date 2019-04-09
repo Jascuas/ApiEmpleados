@@ -116,6 +116,11 @@ namespace ApiOberon.Repositories
             List<ProductoPedidoDTO> producto = context.ProductosPedido.Where(x => x.Id_Pedido == id_pedido).Include(x => x.Producto).ToList();
             return producto;
         }
+        public List<ProductoPedidoDTO> GetProductosPedidos()
+        {
+            List<ProductoPedidoDTO> producto = context.ProductosPedido.Include(x => x.Producto).ToList();
+            return producto;
+        }
 
         public PedidoDTO RegistrarPedido(PedidoDTO pedido)
         {
